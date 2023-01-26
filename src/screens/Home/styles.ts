@@ -6,31 +6,6 @@ export const styles = StyleSheet.create({
         flex: 1,
         padding: 24,
     },
-    form: {
-        width: '100%',
-        flexDirection: 'row',
-        marginTop: 36,
-        marginBottom: 16
-    },
-    input: {
-        backgroundColor: '#262626',
-        flex: 1,
-        height: 54,
-        padding: 16,
-        fontSize: 16,
-        color: '#F2F2F2',
-        borderRadius: 6,
-        borderColor: '#0D0D0D',
-        marginRight: 4
-    },
-    button: {
-        width: 52,
-        height: 52,
-        borderRadius: 6,
-        backgroundColor: '#1E6F9F',
-        alignItems: 'center',
-        justifyContent: 'center'
-    },
     listContainer: {
       backgroundColor: '#262626'
     },
@@ -40,7 +15,7 @@ export const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "space-between",
         marginTop: 32,
-        marginBottom: 12
+        marginBottom: 20,
     },
     headerListItem: {
         flexDirection: "row",
@@ -49,13 +24,12 @@ export const styles = StyleSheet.create({
     textTasksDone: {
         fontSize: 14,
         fontWeight: "bold",
-        color: '#4EA8DE',
+        color: '#8284FA'
     },
     textTasksCreated: {
         fontSize: 14,
         fontWeight: "bold",
-        color: '#8284FA'
-
+        color: '#4EA8DE',
     },
     numberOfTasks: {
         backgroundColor: '#333333',
@@ -72,19 +46,7 @@ export const styles = StyleSheet.create({
         fontSize: 12,
         fontWeight: "bold",
     }
-    // eventName: {
-    //     color: '#FFF',
-    //     fontSize: 24,
-    //     fontWeight: 'bold',
-    //     marginTop: 48
-    // },
-    // eventDate: {
-    //     color: '#6B6B6B',
-    //     fontSize: 16
-    // },
-    // listEmptyText: {
-    //     color: '#FFF',
-    //     fontSize: 14,
-    //     textAlign: 'center'
-    // }
 });
+
+// borderBottomColor: '#333333',
+//     borderWidth: 1
