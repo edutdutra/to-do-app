@@ -1,11 +1,13 @@
 import {View, Text, TouchableOpacity} from "react-native";
+
 import {Ionicons} from '@expo/vector-icons';
 import Checkbox from 'expo-checkbox';
 
+import {ITask} from "../../screens/Home";
+
 import {styles} from "./styles";
 
-export function Task() {
-    const isChecked = false;
+export function Task({description, isChecked}: ITask) {
 
     return (
         <View style={styles.container}>
@@ -19,7 +21,7 @@ export function Task() {
                 <Text
                     style={isChecked ? styles.descriptionTaskDone : styles.descriptionTaskTodo}
                 >
-                    Integer urna interdum massa libero auctor neque turpis turpis semper.
+                    {description}
                 </Text>
 
             </View>

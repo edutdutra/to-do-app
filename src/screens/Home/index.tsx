@@ -1,24 +1,29 @@
 import {useState} from "react";
-import {FlatList, Text, TextInput, TouchableOpacity, View} from "react-native";
+import {FlatList, Text, View} from "react-native";
 
 import {Header} from "../../components/Header";
-
-import {AntDesign} from '@expo/vector-icons';
-
-import {styles} from "./styles";
+import {Input} from "../../components/Input";
 import {Task} from "../../components/Task";
 import {ListEmpty} from "../../components/ListEmpty";
-import {Input} from "../../components/Input";
+
+import {styles} from "./styles";
+
+export interface ITask {
+    description: string;
+    isChecked: boolean;
+}
 
 export function Home() {
-    const [tasks, setTasks] = useState<string[]>(['test1', 'test2']);
-    // const [tasks, setTasks] = useState<string[]>([]);
+    const [tasks, setTasks] = useState<ITask[]>([]);
+    const [newTask, setNewTask] = useState<string>();
+    // const [tasks, setTasks] = useState<ITask[]>([{description: 'Integer urna interdum massa libero auctor neque turpis turpis semper.', isChecked: true}, {description: 'Integer urna interdum massa libero auctor neque turpis turpis semper.', isChecked: false}]);
+
 
     return (
         <View style={styles.container}>
 
             <Header/>
-            <Input/>
+            <Input onAddNewTask={setTasks} />
 
             <View>
                 {/*Header List*/}
@@ -28,7 +33,9 @@ export function Home() {
                             Criadas
                         </Text>
                         <View style={styles.numberOfTasks}>
-                            <Text style={styles.textNumberOfTasks}>0</Text>
+                            <Text style={styles.textNumberOfTasks}>
+                                {tasks.filter(task => task.isChecked === false).length}
+                            </Text>
                         </View>
                     </View>
 
@@ -37,7 +44,9 @@ export function Home() {
                             Concluídas
                         </Text>
                         <View style={styles.numberOfTasks}>
-                            <Text style={styles.textNumberOfTasks}>0</Text>
+                            <Text style={styles.textNumberOfTasks}>
+                                {tasks.filter(task => task.isChecked === true).length}
+                            </Text>
                         </View>
                     </View>
                 </View>
@@ -45,9 +54,9 @@ export function Home() {
                 {/*List*/}
                 <FlatList
                     data={tasks}
-                    keyExtractor={item => item}
+                    keyExtractor={item => item.description}
                     renderItem={({item}) => (
-                        <Task/>
+                        <Task description={item.description} isChecked={item.isChecked} />
                     )}
                     showsVerticalScrollIndicator={false}
                     ListEmptyComponent={() => (
