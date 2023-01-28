@@ -15,15 +15,38 @@ export interface ITask {
 
 export function Home() {
     const [tasks, setTasks] = useState<ITask[]>([]);
-    const [newTask, setNewTask] = useState<string>();
-    // const [tasks, setTasks] = useState<ITask[]>([{description: 'Integer urna interdum massa libero auctor neque turpis turpis semper.', isChecked: true}, {description: 'Integer urna interdum massa libero auctor neque turpis turpis semper.', isChecked: false}]);
 
+    function deleteTask(taskDeletedDescription: string) {
+        setTasks(prevState => prevState.filter(task => task.description !== taskDeletedDescription))
+    }
+
+    function checkTask(taskCheckedDescription: string) {
+        setTasks((prevState) => prevState.map(task => {
+            if (task.description === taskCheckedDescription) {
+                task.isChecked = !task.isChecked
+            }
+
+            return task
+        }));
+    }
+
+    // function checkTask(taskCheckedDescription: string) {
+    //     setTasks((prevState) => {
+    //         const task = prevState.find(task => task.description === taskCheckedDescription)
+    //
+    //         if (task) {
+    //             task.isChecked = !task.isChecked;
+    //         }
+    //
+    //         return prevState
+    //     });
+    // }
 
     return (
         <View style={styles.container}>
 
             <Header/>
-            <Input onAddNewTask={setTasks} />
+            <Input onAddNewTask={setTasks}/>
 
             <View>
                 {/*Header List*/}
@@ -56,7 +79,12 @@ export function Home() {
                     data={tasks}
                     keyExtractor={item => item.description}
                     renderItem={({item}) => (
-                        <Task description={item.description} isChecked={item.isChecked} />
+                        <Task
+                            description={item.description}
+                            isChecked={item.isChecked}
+                            onDelete={deleteTask}
+                            onCheck={checkTask}
+                        />
                     )}
                     showsVerticalScrollIndicator={false}
                     ListEmptyComponent={() => (

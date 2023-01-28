@@ -7,7 +7,21 @@ import {ITask} from "../../screens/Home";
 
 import {styles} from "./styles";
 
-export function Task({description, isChecked}: ITask) {
+
+type Props = ITask & {
+    onDelete: (description: string) => void;
+    onCheck: (description: string) => void;
+}
+
+export function Task({description, isChecked, onDelete, onCheck}: Props) {
+
+    function handleDeleteTask() {
+        onDelete(description);
+    }
+
+    function handleCheckTask() {
+        onCheck(description);
+    }
 
     return (
         <View style={styles.container}>
@@ -15,6 +29,7 @@ export function Task({description, isChecked}: ITask) {
                 style={styles.checkbox}
                 value={isChecked}
                 color={isChecked ? '#5E60CE' : '#4EA8DE'}
+                onValueChange={handleCheckTask}
             />
 
             <View style={styles.content}>
@@ -26,7 +41,10 @@ export function Task({description, isChecked}: ITask) {
 
             </View>
 
-            <TouchableOpacity style={styles.icon}>
+            <TouchableOpacity
+                style={styles.icon}
+                onPress={handleDeleteTask}
+            >
                 <Ionicons
                     name="md-trash-outline"
                     size={20}
