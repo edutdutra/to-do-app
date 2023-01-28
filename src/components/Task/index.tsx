@@ -27,7 +27,7 @@ export function Task() {
             <TouchableOpacity style={styles.icon}>
                 <Ionicons
                     name="md-trash-outline"
-                    size={24}
+                    size={20}
                     color="#808080"
                 />
             </TouchableOpacity>

@@ -11,8 +11,8 @@ import {ListEmpty} from "../../components/ListEmpty";
 import {Input} from "../../components/Input";
 
 export function Home() {
-    // const [tasks, setTasks] = useState<string[]>(['test1', 'test2']);
-    const [tasks, setTasks] = useState<string[]>([]);
+    const [tasks, setTasks] = useState<string[]>(['test1', 'test2']);
+    // const [tasks, setTasks] = useState<string[]>([]);
 
     return (
         <View style={styles.container}>
